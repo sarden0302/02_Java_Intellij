@@ -28,6 +28,6 @@ public class ScannerEx1 {
         bw.write(str);
         bw.flush();
         bw.close();
-
+        System.out.println("git connected!");
     }
 }
