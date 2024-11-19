@@ -19,6 +19,7 @@ public class ConditionEx {
     public void scannerAge() {
         System.out.println("나이를 확인하기");
 
+
         int age = sc.nextInt();
         if (age < 18) {
             System.out.println("Not Adult");
