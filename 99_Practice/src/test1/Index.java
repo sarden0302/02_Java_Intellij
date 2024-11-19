@@ -6,12 +6,13 @@ public class Index {
         String temp = "";
         for (int i = 0; i < value.length() - 1; i++) {
             if (value.charAt(i) == '-' && value.charAt(i + 1) == '-') {
-                temp = value.substring(0, i + 1) + "(" + value.substring(i +1);
+                System.out.println("start = " + i + ", end = " + (i + 1));
+                temp = value.substring(0, i + 1* count) + "(" + value.substring(i + 1);
                 count++;
             }
         }
 
-
+        temp += ")";
         return temp;
     }
 
