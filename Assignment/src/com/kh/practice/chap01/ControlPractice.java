@@ -174,9 +174,11 @@ public class ControlPractice {
         try {
             System.out.print("키(m)를 입력해 주세요 : ");
             float height = Float.parseFloat(sc.nextLine());
-            System.out.print("몸무게(kg)를 입력해 주세요.");
+            System.out.print("몸무게(kg)를 입력해 주세요 : ");
             float weight = Float.parseFloat(sc.nextLine());
             double bmi = weight/(height * height);
+
+            System.out.println("BMI 지수 : " + bmi);
 
             if (bmi < 18.5) {
                 System.out.println("저체중");
@@ -197,7 +199,6 @@ public class ControlPractice {
                 System.out.println("비만");
                 return;
             }
-
             System.out.println("고도 비만");
 
         } catch(NumberFormatException e) {
@@ -225,7 +226,7 @@ public class ControlPractice {
                     result = num1 * num2;
                     break;
                 case "/":
-                    result = num1 / num2;
+                    result = (float)num1 / num2;
                     break;
                 case "%":
                     result = num1 % num2;
@@ -233,7 +234,7 @@ public class ControlPractice {
                 default:
                     throw new Exception();
             }
-            System.out.println(num1 + operation + num2 + " = " + result);
+            System.out.printf(num1 + operation + num2 + " = %.6f", result);
 
 
         } catch(NumberFormatException e) {
@@ -242,6 +243,28 @@ public class ControlPractice {
         } catch(Exception e) {
             System.out.println("잘못 입력하셨습니다. 프로그램을 종료합니다.");
             practice8();
+        }
+    }
+
+    public void practice9() {
+        try {
+            System.out.print("중간 고사 점수 : ");
+            int midterm = Integer.parseInt(sc.nextLine());
+            System.out.print("기말 고사 점수 : ");
+            int finalExam = Integer.parseInt(sc.nextLine());
+            System.out.print("과제 점수 : ");
+            int assignmentScore = Integer.parseInt(sc.nextLine());
+            System.out.print("출석 회수 : ");
+            int attendanceScore = Integer.parseInt(sc.nextLine());
+
+            System.out.println("================= 결과 =================");
+            System.out.printf("중간 고사 점수(20) : %.1f", (float)midterm / 20);
+            System.out.printf("기말 고사 점수(20) : %.1f", (float)finalExam / 30);
+            System.out.printf("과제 점수       (30) : %.1f", (float)assignmentScore / 30);
+            System.out.printf("출석 점수       (20) : %.1f", (float)assignmentScore / 30);
+        } catch (Exception e) {
+            System.out.println("형식에 맞게 작성해주세요.");
+            practice9();
         }
     }
 

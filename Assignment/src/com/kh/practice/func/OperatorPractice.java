@@ -216,11 +216,11 @@ public class OperatorPractice {
 
     public void practice10() {
         try {
-            System.out.print("정수1 : ");
+            System.out.print("입력1 : ");
             int num1 = Integer.parseInt(sc.nextLine());
-            System.out.print("정수2 : ");
+            System.out.print("입력2 : ");
             int num2 = Integer.parseInt(sc.nextLine());
-            System.out.print("입력 : ");
+            System.out.print("입력3 : ");
             int num3 = Integer.parseInt(sc.nextLine());
 
             if (num3 == num1 && num3 == num2) {

@@ -5,6 +5,6 @@ public class Practice1Run {
         Practice1 p1 = new Practice1();
         //p1.method1();
         //p1.method2();
-        p1.method3();
+        p1.method10();
     }
 }
