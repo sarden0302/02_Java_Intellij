@@ -69,30 +69,37 @@ public class ControlPractice {
     }
 
     public void practice3() {
-        System.out.print("국어점수 : ");
-        int kor = Integer.parseInt(sc.nextLine());
-        System.out.print("수학점수 : ");
-        int math = Integer.parseInt(sc.nextLine());
-        System.out.print("영어점수 : ");
-        int eng = Integer.parseInt(sc.nextLine());
+        try {
+            System.out.print("국어점수 : ");
+            int kor = Integer.parseInt(sc.nextLine());
+            System.out.print("수학점수 : ");
+            int math = Integer.parseInt(sc.nextLine());
+            System.out.print("영어점수 : ");
+            int eng = Integer.parseInt(sc.nextLine());
 
-        int total = kor + eng + math;
-        double average = (float)total / 3.0;
+            int total = kor + eng + math;
+            double average = (float)total / 3.0;
 
-        boolean pass = true;
-        if (kor < 40 || eng < 40 || math < 40) pass = false;
-        if (average < 60) pass= false;
-        if (!pass) {
-            System.out.println("불합격입니다.");
-            return;
+            boolean pass = true;
+            if (kor < 40 || eng < 40 || math < 40) pass = false;
+            if (average < 60) pass= false;
+            if (!pass) {
+                System.out.println("불합격입니다.");
+                return;
+            }
+            System.out.println("국어 : " + kor);
+            System.out.println("수학 : " + math);
+            System.out.println("영어 : " + eng);
+            System.out.println("합계 : " + total);
+            System.out.println("평균 : " + average);
+
+            System.out.println("축하합니다, 합격입니다!");
+
+        } catch (Exception e) {
+            System.out.println("숫자로만 입력해주세요");
+            practice3();
         }
-        System.out.println("국어 : " + kor);
-        System.out.println("수학 : " + math);
-        System.out.println("영어 : " + eng);
-        System.out.println("합계 : " + total);
-        System.out.println("평균 : " + average);
 
-        System.out.println("축하합니다, 합격입니다!");
     }
 
     public void practice4() {
@@ -234,7 +241,7 @@ public class ControlPractice {
                 default:
                     throw new Exception();
             }
-            System.out.printf(num1 + operation + num2 + " = %.6f", result);
+            System.out.printf(num1 + operation + num2 + " = %.6f\n", result);
 
 
         } catch(NumberFormatException e) {
@@ -257,14 +264,80 @@ public class ControlPractice {
             System.out.print("출석 회수 : ");
             int attendanceScore = Integer.parseInt(sc.nextLine());
 
+            double total = (float)midterm * 0.2 + (float)finalExam * 0.3 + (float)assignmentScore * 0.3 + (float)attendanceScore;
             System.out.println("================= 결과 =================");
-            System.out.printf("중간 고사 점수(20) : %.1f", (float)midterm / 20);
-            System.out.printf("기말 고사 점수(20) : %.1f", (float)finalExam / 30);
-            System.out.printf("과제 점수       (30) : %.1f", (float)assignmentScore / 30);
-            System.out.printf("출석 점수       (20) : %.1f", (float)assignmentScore / 30);
+            if (attendanceScore < 14) {
+                System.out.printf("Fail [출석 회수 부족 (%d/20)]\n", attendanceScore);
+                return;
+            }
+            System.out.printf("중간 고사 점수(20) : %.1f\n", (float)midterm * 0.2);
+            System.out.printf("기말 고사 점수(20) : %.1f\n", (float)finalExam * 0.3);
+            System.out.printf("과제 점수       (30) : %.1f\n", (float)assignmentScore * 0.3);
+            System.out.printf("출석 점수       (20) : %.1f\n", (float)attendanceScore);
+            System.out.printf("총점 : %.1f\n", total);
+            System.out.println((total >= 70)?"Pass" : "Fail [점수미달]" );
         } catch (Exception e) {
             System.out.println("형식에 맞게 작성해주세요.");
             practice9();
+        }
+    }
+
+    public void practice10() {
+        boolean isTrue = true;
+        while(isTrue) {
+            System.out.println("*** 실행할 기능을 선택하세요. ***");
+            System.out.println("1. 메뉴 출력");
+            System.out.println("2. 짝수/홀수");
+            System.out.println("3. 합격/불합격");
+            System.out.println("4. 계절");
+            System.out.println("5. 로그인");
+            System.out.println("6. 권한 확인");
+            System.out.println("7. BMI");
+            System.out.println("8. 계산기");
+            System.out.println("9. P/F");
+            System.out.println("0. 종료");
+            System.out.print("선택 : ");
+
+            int choice = Integer.parseInt(sc.nextLine());
+            switch (choice) {
+                case 1:
+                    // main() 예외적으로 클래스파일명 변수명 = new 클래스파일명();
+                    // 작성 후 불러올 수 있다.
+                    practice1();
+                    break;
+                case 2:
+                    practice2();
+                    break;
+                case 3:
+                    practice3();
+                    break;
+                case 4:
+                    practice4();
+                    break;
+                case 5:
+                    practice5();
+                    break;
+                case 6:
+                    practice6();
+                    break;
+                case 7:
+                    practice7();
+                    break;
+                case 8:
+                    practice8();
+                    break;
+                case 9 :
+                    practice9();
+                    break;
+                case 0:
+                    System.out.println("프로그램을 종료합니다");
+                    isTrue = false;
+                    break;
+                default:
+                    System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
+                    break;
+            }
+
         }
     }
 

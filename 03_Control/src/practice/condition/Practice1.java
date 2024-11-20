@@ -117,6 +117,34 @@ public class Practice1 {
         System.out.println("로그인 성공!");
     }
 
+    public void method6() {
+        String input = "";
+        try {
+            System.out.print("권한을 확인하고자 하는 회원 등급 : ");
+            input = sc.nextLine();
+            if (!input.equals("관리자") && !input.equals("회원") && !input.equals("비회원")) {
+                throw new Exception();
+            }
+
+            if (input.equals("관리자")) {
+                System.out.println("회원관리, 게시글 관리, 게시글 작성, 댓글 작성, 게시글 조회");
+                return;
+            }
+
+            if (input.equals("회원")) {
+                System.out.println("게시글 작성, 게시글 조회, 댓글 작성");
+                return;
+            }
+
+            System.out.println("게시글 조회");
+            return;
+
+        } catch  (Exception e) {
+            System.out.println("관리자, 회원, 비회원 중 입력하세요");
+            method6();
+        }
+    }
+
     public void method10() {
         boolean isTrue = true;
         while(isTrue) {
@@ -153,6 +181,8 @@ public class Practice1 {
                     method5();
                     break;
                 case 6:
+                    method6();
+                    break;
                 case 7:
                 case 8:
                 case 9:
@@ -166,7 +196,6 @@ public class Practice1 {
                     System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
                     break;
             }
-
         }
     }
 }
