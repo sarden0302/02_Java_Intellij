@@ -3,6 +3,8 @@ package com.kh.practice.func;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 public class OperatorPractice {
     Scanner sc = new Scanner(System.in);
@@ -162,16 +164,98 @@ public class OperatorPractice {
     }
 
     public void practice8() {
-        String REGEXP_ID = "^\\d{6}-\\d{7}$";
+        String REGEXP_ID = "\\d{6} \\- [1-4]\\d{6}";
         try {
             System.out.print("주민번호를 입력하세요(- 포함) : ");
             String identification = sc.nextLine();
-            if (!REGEXP_ID.matches(identification)) {
+            if (identification.matches(REGEXP_ID)) {
                 throw new NumberFormatException();
             }
+            StringTokenizer st = new StringTokenizer(identification, "-");
+            String str = st.nextToken();
+            str = st.nextToken();
+            if (str.charAt(0) == '1') {
+                System.out.println("남성입니다.");
+                return;
+            }
+            System.out.println("여성입니다.");
+
         } catch (Exception e) {
             System.out.println("형식에 맞게 작성해주세요");
             practice8();
+        }
+    }
+
+    public void practice9() {
+        try {
+            System.out.print("정수1 : ");
+            int num1 = Integer.parseInt(sc.nextLine());
+            System.out.print("정수2 : ");
+            int num2 = Integer.parseInt(sc.nextLine());
+            if (num1 > num2) {
+                throw new ClassNotFoundException();
+            }
+            System.out.print("입력 : ");
+            int num3 = Integer.parseInt(sc.nextLine());
+
+            if (num3 <= num1 || num3 > num2) {
+                System.out.println(true);
+                return;
+            }
+            System.out.println(false);
+
+        } catch (NumberFormatException e) {
+            System.out.println("정수만 입력하세요 님아");
+            practice9();
+        } catch(ClassNotFoundException e) {
+            System.out.println("정수1이 정수2보다 작아야합니다");
+            practice9();
+        }
+
+    }
+
+    public void practice10() {
+        try {
+            System.out.print("정수1 : ");
+            int num1 = Integer.parseInt(sc.nextLine());
+            System.out.print("정수2 : ");
+            int num2 = Integer.parseInt(sc.nextLine());
+            System.out.print("입력 : ");
+            int num3 = Integer.parseInt(sc.nextLine());
+
+            if (num3 == num1 && num3 == num2) {
+                System.out.println(true);
+                return;
+            }
+            System.out.println(false);
+        } catch (NumberFormatException e) {
+            System.out.println("정수만 입력하세요 님아");
+            practice10();
+        }
+    }
+
+    public void practice11() {
+        try {
+            System.out.print("A사원의 연봉 : ");
+            float a = Float.parseFloat(sc.nextLine());
+            System.out.print("B사원의 연봉 : ");
+            float b = Float.parseFloat(sc.nextLine());
+            System.out.print("C사원의 연봉 : ");
+            float c = Float.parseFloat(sc.nextLine());
+
+            double aTotal = a * 1.4;
+            double cTotal = c * 1.15;
+            System.out.println("A사원 연봉/연봉+a : " + a + "/" + aTotal);
+            System.out.println((aTotal >= 3000) ? "3000이상" : "3000미만");
+            System.out.println("B사원 연봉/연봉+a : " + b + "/" + b);
+            System.out.println((b >= 3000) ? "3000이상" : "3000미만");
+            System.out.println("A사원 연봉/연봉+a : " + c + "/" + cTotal);
+            System.out.println((cTotal >= 3000) ? "3000이상" : "3000미만");
+
+
+        } catch(Exception e) {
+            System.out.println("니 연봉도 제대로 못 적니 걍 들어가라.");
+            practice11();
         }
     }
 }
