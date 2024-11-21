@@ -266,13 +266,13 @@ public class DimensionPractice {
             while (true) {
                 System.out.print("행 인덱스 입력 : ");
                 int row = Integer.parseInt(sc.nextLine());
+                if (row == 99) {
+                    break;
+                }
                 System.out.print("열 인덱스 입력 : ");
                 int col = Integer.parseInt(sc.nextLine());
                 if (row < 0 || col < 0) {
                     throw new Exception();
-                }
-                if (row == 99) {
-                    break;
                 }
                 arr[row][col] = true;
                 int maxlength = Math.max(row, col);
