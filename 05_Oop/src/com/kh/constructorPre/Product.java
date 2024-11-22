@@ -1,4 +1,4 @@
-package com.kh.example.practice2.model.vo;
+package com.kh.constructorPre;
 
 public class Product {
     private String pName;

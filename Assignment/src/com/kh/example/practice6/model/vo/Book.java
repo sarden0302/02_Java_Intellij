@@ -28,4 +28,5 @@ public class Book {
     public void inform() {
         System.out.println("Title: " + title + ", Publisher: " + publisher + ", Author: " + author + ", Price: " + price + ", DiscountRate: " + discountRate);
     }
+
 }

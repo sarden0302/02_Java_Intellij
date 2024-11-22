@@ -85,6 +85,6 @@ public class Employee {
     }
 
     public String printEmployee() {
-        return null;
+        return this.empNo + ", " + this.name + ", " + this.gender + ", " + this.phone + ", " + this.dept + ", " + this.salary + ", " + this.bonus;
     }
 }

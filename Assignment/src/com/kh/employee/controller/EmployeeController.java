@@ -2,11 +2,8 @@ package com.kh.employee.controller;
 
 import com.kh.employee.model.vo.Employee;
 
-import java.util.ArrayList;
-
 public class EmployeeController {
-    ArrayList<Employee> employees;
-    Employee e = new Employee();
+    public Employee e = new Employee();
 
     public void add(int empNo, String name, char gender, String phone) {
         e.setEmpNo(empNo);
@@ -37,8 +34,8 @@ public class EmployeeController {
         e.setBonus(bonus);
     }
 
-    public void remove() {
-        e = null;
+    public Employee remove() {
+        return null;
     }
 
     public String inform() {
