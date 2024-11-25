@@ -1,0 +1,20 @@
+1. DTO
+    -> Data Transfer Object (값 전달하는 변수명 작성)
+    ex) 메이버 기준 : 쇼핑, 카페, 블로그, 이메일, 뉴스 etc
+    필드, 생성자, 매서드(Getter, Setter, toString) 기능들 작성
+2. Service
+    -> 기능 제공 클래스
+    logic을 활용해 데이터 저장, 불러오기, 가공하는 것을 지정
+    ex) 메이버 기준 : 쇼핑에 관련된 기능
+                        ... etc
+
+3. run
+    -> 자바 프로그램 실행용 package
+    원하는 기능을 실행할 때 main() 매서드 안에 실행하고자 하는 기능 작성
+
+4. view
+    -> 입력과 출력을 담당하는 package
+    객체의 속성이나 기능 정의
+    HTML 과 연결 시 HTML이 view를 담당
+
+
