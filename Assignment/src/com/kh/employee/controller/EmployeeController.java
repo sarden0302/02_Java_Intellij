@@ -39,6 +39,6 @@ public class EmployeeController {
     }
 
     public String inform() {
-        return (e == null) ? null : e.printEmployee();
+        return (e == null) ? "모두 퇴사하였습니다." : e.printEmployee();
     }
 }

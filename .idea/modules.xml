@@ -9,6 +9,8 @@
       <module fileurl="file://$PROJECT_DIR$/04_Array/04_Array.iml" filepath="$PROJECT_DIR$/04_Array/04_Array.iml" />
       <module fileurl="file://$PROJECT_DIR$/05_Oop/05_Oop.iml" filepath="$PROJECT_DIR$/05_Oop/05_Oop.iml" />
       <module fileurl="file://$PROJECT_DIR$/06_ObjectArray/06_ObjectArray.iml" filepath="$PROJECT_DIR$/06_ObjectArray/06_ObjectArray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07_Inheritance/07_Inheritance.iml" filepath="$PROJECT_DIR$/07_Inheritance/07_Inheritance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08_Polymorphism/08_Polymorphism.iml" filepath="$PROJECT_DIR$/08_Polymorphism/08_Polymorphism.iml" />
       <module fileurl="file://$PROJECT_DIR$/99_Practice/99_Practice.iml" filepath="$PROJECT_DIR$/99_Practice/99_Practice.iml" />
       <module fileurl="file://$PROJECT_DIR$/Assignment/Assignment.iml" filepath="$PROJECT_DIR$/Assignment/Assignment.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/java-workspace.iml" filepath="$PROJECT_DIR$/.idea/java-workspace.iml" />

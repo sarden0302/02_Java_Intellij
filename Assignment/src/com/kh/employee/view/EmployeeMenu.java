@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class EmployeeMenu {
     Scanner sc = new Scanner(System.in);
-    EmployeeController employee = new EmployeeController();
+    ArrayList<EmployeeController> employees = new ArrayList<EmployeeController>();
 
     public EmployeeMenu() {
         try {
@@ -36,11 +36,47 @@ public class EmployeeMenu {
                 default:
                     throw new NumberFormatException();
             }
-            new EmployeeMenu();
+            new EmployeeMenu(employees);
 
         } catch (NumberFormatException e) {
             System.out.println("입력 방식이 잘못 되었습니다. 다시 입력해주세요");
-            new EmployeeMenu();
+            new EmployeeMenu(employees);
+        }
+    }
+
+    public EmployeeMenu(ArrayList<EmployeeController> employees) {
+        this.employees = employees;
+        try {
+            System.out.println("1. 사원 추가");
+            System.out.println("2. 사원 수정");
+            System.out.println("3. 사원 삭제");
+            System.out.println("4. 사원 출력");
+            System.out.println("9. 프로그램 종료");
+            System.out.print("메뉴 번호를 누르세요 : ");
+            int choice = Integer.parseInt(sc.nextLine());
+            switch (choice) {
+                case 1:
+                    insertEmp();
+                    break;
+                case 2:
+                    updateEmp();
+                    break;
+                case 3:
+                    deleteEmp();
+                    break;
+                case 4:
+                    printEmp();
+                    break;
+                case 9:
+                    return;
+                default:
+                    throw new NumberFormatException();
+            }
+            new EmployeeMenu(employees);
+
+        } catch (NumberFormatException e) {
+            System.out.println("입력 방식이 잘못 되었습니다. 다시 입력해주세요");
+            new EmployeeMenu(employees);
         }
     }
 
@@ -77,10 +113,14 @@ public class EmployeeMenu {
                 System.out.println("Yes or No");
             }
             if (dept != null && salary != 0 && bonus != 0) {
+                EmployeeController employee = new EmployeeController();
                 employee.add(empNo, name, gender, phone, dept, salary, bonus);
+                employees.add(employee);
 
             } else {
+                EmployeeController employee = new EmployeeController();
                 employee.add(empNo, name, gender, phone);
+                employees.add(employee);
             }
             new EmployeeMenu();
 
@@ -100,6 +140,7 @@ public class EmployeeMenu {
             System.out.println("9. 돌아가기");
             System.out.print("메뉴 번호를 누르세요 : ");
             int choice = Integer.parseInt(sc.nextLine());
+            EmployeeController employee = employees.get(employees.size() - 1);
 
             switch (choice) {
                 case 1:
@@ -134,8 +175,8 @@ public class EmployeeMenu {
         System.out.print("정말 삭제하시겠습니까? (y/n) : ");
         String yesOrNo = sc.nextLine();
         if (yesOrNo.equalsIgnoreCase("y")) {
-            if (employee != null) {
-                employee.e = employee.remove();
+            if (!employees.isEmpty()) {
+                employees.remove(employees.size() - 1);
                 System.out.println("삭제 성공");
                 return;
             }
@@ -150,8 +191,10 @@ public class EmployeeMenu {
     }
 
     public void printEmp() {
-        if (employee != null) {
-            employee.inform();
+        if (!employees.isEmpty()) {
+            for (EmployeeController employee : employees) {
+                System.out.println(employee.inform());
+            }
         }
     }
 

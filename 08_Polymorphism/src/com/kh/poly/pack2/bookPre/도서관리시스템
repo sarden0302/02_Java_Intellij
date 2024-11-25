@@ -1,0 +1,21 @@
+문제 설명
+
+1. Book(도서) 클래스
+String title
+String author
+int price
+
+2. EBook extends Book
+String fileSize
+
+3. PrintBook extends Book
+int shippingCost
+
+4. BookRun
+전자책
+자바 프로그래밍 홍길동 20000 15.5MB
+종이책
+파이썬 입문, 이영희, 18000, 3000원
+
+
+
