@@ -1,0 +1,6 @@
+                                Iterator                                           Foreach
+제어 방식               수동제어 hasNext(), next()호출                                자동으로 회전
+컬렉션 수정              중간에 remove() 값 삭제 가능                               수정 불가(일기만 가능)
+사용 가능 범위            Collection interface를 받는 모든 class               집합으로 이루어진 요소들
+코드 작성난이도                    다소 복잡                                        간단하고 직관적
+에러 발생 가능성           잘못된 회전이나 삭제를 할 경우                                   안전

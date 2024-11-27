@@ -3,6 +3,7 @@ package com.kh.CollectionEx.pack1.listEx;
 // Collection Framework
 // java.util API
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 // 특징
@@ -50,5 +51,41 @@ public class BookService {
         System.out.println(list1);
         System.out.println(list1.size());
     }
+
+    private ArrayList<Book> bookList = new ArrayList<>();
+
+    // 책 추가 기능
+    public void addBook(String title, String author, int price) {
+        bookList.add(new Book(title, author, price));
+        System.out.println(bookList);
+        System.out.println("책이 성공적으로 추가되었습니다.");
+    }
+
+    public void removeBook(String title) {
+
+        boolean found = false;
+
+        for (int i = 0; i < bookList.size(); i++) {
+            if (bookList.get(i).getTitle().equals(title)) {
+                bookList.remove(i);
+                System.out.println("책이 성공적으로 삭제되었습니다 : " + title);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("해당 제목의 책을 찾을 수 없습니다. : " + title);
+        }
+
+    }
+
+    //저정된 책 모두 확인하기
+    public ArrayList<Book> getBookList() {
+        return bookList;
+    }
+
+
+
 
 }

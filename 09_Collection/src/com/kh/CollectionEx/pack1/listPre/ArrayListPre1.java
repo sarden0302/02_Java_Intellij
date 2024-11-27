@@ -108,6 +108,16 @@ public class ArrayListPre1 {
         System.out.println("CharList : " + charList);
 
         // 3. Boolean
+        ArrayList<Boolean> booleanList = new ArrayList<>();
+        booleanList.add(true);
+        booleanList.add(false);
+        System.out.println("BooleanList : " + booleanList);
+
+        // 4. Float
+        ArrayList<Float> floatList = new ArrayList<>();
+        floatList.add(1.5f);
+        floatList.add(3.14f);
+        System.out.println("FloatList : " + floatList);
 
     }
 }
