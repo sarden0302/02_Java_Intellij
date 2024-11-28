@@ -1,3 +1,22 @@
 단축키 : Ctrl + Alt + T
 
 코드 작성 중 후에 감싸고자 하는 코드에 자동으로 원하는 속성으로 감싸기를 진행
+
+
+try
+    (1) try ~ catch
+    (2) try ~ catch ~ catch ...
+    (3) try ~ catch ~ catch ... finally
+    (4) try ~ catch ~ finally
+    (5) try ~ finally
+
+catch
+
+finally
+    try ~ catch ~ finally
+    try ~ finally
+
+    주로 사용하는 경우
+        - 외부 프로그램에서 장치 연결을 강제적으로 끊어야할 때 주로 사용
+
+throw

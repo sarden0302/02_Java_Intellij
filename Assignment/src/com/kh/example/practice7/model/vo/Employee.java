@@ -1,16 +1,16 @@
 package com.kh.example.practice7.model.vo;
 
 public class Employee {
-    public int empNo;
-    public String empName;
-    public String dept;
-    public String job;
-    public int age;
-    public char gender;
-    public int salary;
-    public double bonusPoint;
-    public String phone;
-    public String address;
+    private int empNo;
+    private String empName;
+    private String dept;
+    private String job;
+    private int age;
+    private char gender;
+    private int salary;
+    private double bonusPoint;
+    private String phone;
+    private String address;
 
     public Employee() {}
 
@@ -110,5 +110,10 @@ public class Employee {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee [empNo=" + empNo + ", empName=" + empName + ", dept=" + dept + ", job=" + job + ", age=" + age + ", gender=" + gender + ", salary=" + salary + ", bonusPoint=" + bonusPoint + ", phone=" + phone + ", address=" + address + "]";
     }
 }

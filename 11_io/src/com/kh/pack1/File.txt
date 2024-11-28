@@ -1,0 +1,57 @@
+File 클래스
+
+java.io API 내부 클래스 중 하나
+
+파일 / 디렉토리(폴더)를 관리하는 클래스
+(파일 / 디렉토리 존재 유무 관계 없음)
+
+- 파일 생성, 제거, 이름, 크기, 마지막 수정일, 존재 여부
+
+[method]
+boolean mkdir()         : 하나의 디렉토리(폴더) 생성
+boolean mkdirs()        : 경로상의 모든 디렉토리 생성
+boolean createNewFile() : 파일 생성
+boolean delete()        : 파일 삭제
+String getName          : 파일 이름 반환
+String parent()         : 파일이 저장된 폴더 반환
+String getPath()        : 전체 경로 반환
+boolean isFile()        : 현재 File 객체과 관리하는게 파일이면 true
+boolean isDirectory()   : 현재 File 객체가 관리하는게 Directory면 true
+boolean exists()        : File / Directory 가 존재하면 true
+long length()           : 파일 크기 변환
+long lastModified()     : 파일 파지막 수정일 (ex. 1970.01.01 09:00 부터 현재까지 지난 시간을 ms 단위로 반환)
+String[] list()         : 디렉토리 내 파일 목록을 String[] 배열로 반환
+File[] listFiles()      : 디렉토리 내 파일 목록을 File[] 배열로
+
+
+
+File 폴더 = new File(System.getProperty("user.home") + "/Desktop/newFolders");
+    - System.getProperty("user.home") : 현재 사용하는 유저의 바탕화면 오기 전의 폴더 위치 설정
+    - System.getProperty("user.home") = "C://Users/sarde/OneDriveSt"
+    - newFolders                      : 라는 이름의 폴더 생성
+System.out.println("폴더 위치 : " + 폴더.getPath());
+    - getPath() : 현재 만들고자하는 폴더의 전체 경로
+System.out.println("폴더 절대경로 : " + 폴더.getAbsolutePath());
+    - getAbsolutePath() : 어디서 봐도 무조건적인 폴더의 전체 경로
+System.out.println("폴더 이름 : " + 폴더.getName());
+System.out.println("폴더가 존재하는지 확인 : " + 폴더.exists());
+    - exists() : 폴더 존재하는지 확인(boolean)
+폴더.mkdir();
+
+[개발자 상식]
+OS : Operating System(운영 체제)
+                         Windows       Linux/Mac
+                          폴더            디렉토리
+ 경로 표기 방법       C:\Users\sarde     C:/Users/sarde
+
+Java는 OS에 관계없이 /,\ 둘 다 호환해서 사용 가능
+/로 표기하는 것을 선호!
+
+1) 절대 경로 : 하나의 (절대적인)기준으로 목표까지의 경로를 모두 표기
+    [기준]
+        - Windows       ->   C:/    or    D:/
+        - Linux, Mac    ->  /Users  or    /
+
+2) 상대 경로 : 현재 위치를 기준으로 목표까지의 경로 표기 방법
+
+
