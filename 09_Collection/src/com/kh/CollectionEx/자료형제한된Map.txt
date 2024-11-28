@@ -1,0 +1,1 @@
+HashMap<key 자료형, value 자료형> 변수명 = new HashMap<>();

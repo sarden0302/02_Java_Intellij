@@ -33,6 +33,10 @@ Collection (상위 인터페이스)
        ├── PriorityQueue (우선순위 큐)
        └── Deque (양방향 큐)
 Map (키-값 쌍을 다루는 인터페이스)
- ├── HashMap (빠른 접근 속도)
- ├── TreeMap (정렬된 키 관리)
- └── LinkedHashMap (삽입 순서 유지)
+ ├── HashMap (빠른 접근 속도)             : 저장하는 순서를 유지하지 않고, 빠른 데이터 접근 속도. 메모리 사용량 높음
+ ├── TreeMap (정렬된 키 관리)             : 데이터 키를 정렬된 순서로 저장, 삽입 삭제 검색이 느림
+ └── LinkedHashMap (삽입 순서 유지)       : 삽입된 순서 유지/ 메모리 사용량 높음
+
+ 빠른 검색 속도   : HashMap
+ 키가 정렬된 상태  : TreeMap
+ 삽입 순서 유지   : LinkedHashMap     -> 로그 파일에서 시간순으로 발생한 행위 추적시 유용

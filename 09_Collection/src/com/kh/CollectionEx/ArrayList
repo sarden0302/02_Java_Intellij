@@ -12,9 +12,9 @@ remove(Integer.valueOf(정수값)) : index를 모를 때
 set(int index, E e)            : 특정 인덱스의 요소를 새로운 값으로 변경
 get(int index)                 : 특정 인덱스의 요소를 반환
 size()                         : 리스트의 크기
-isEmpty()                      : 리스트가 비어있는지 확인
-contains(Object o)             : 리스트에 요소가 포함되어 있는지 확인
+isEmpty()          ::boolean   : 리스트가 비어있는지 확인
+contains(Object o) ::boolean   : 리스트에 요소가 포함되어 있는지 확인
 indexOf(Object o)              : 첫번째로 위치한 요소의 index를 반환
-clear()                        : list의 모든 요소 삭제
+clear()            ::boolean   : list의 모든 요소 삭제
 addAll(Collection c)           : 다른 컬렉션의 모든 요소를 복사해서 추가
 subList(int start, int end)    : start ~ end까지의 요소들을 추출해서 새로 만듬

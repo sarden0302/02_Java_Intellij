@@ -1,0 +1,31 @@
+Map
+
+Entry = (key, value)
+    - 기록, 항목, 등록, 입장하다
+    - 데이터가 저장된 하나의 단위
+
+key
+    - 키의 명칭은 중복 x
+       -> 키명이 같은 value를 add할 시 새로운 value로 update됌
+    - 순서 유지 x
+    - Map.keySet()  /  Map.EntrySet()
+
+value
+    - key로 인해 value가 구분 됌
+    - Map.get(key)  / Map.remove(key)
+
+
+
+[주요 메서드]
+put(K key, V vlaue)
+get(Object key)
+remove(Object key)
+containsKey(Object key)
+containsValue(Object value)
+size()
+isEmpty()
+
+------------------------------------
+keySet()        : key                   Set<Object>
+entrySet()      : key + value           Set<Map.Entry<key,value>>
+
