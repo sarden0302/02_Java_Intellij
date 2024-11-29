@@ -51,4 +51,46 @@ public class FileReadWrite {
         }
     }
 
+    // 만들어진 파일을 읽고 눈으로 어떤 내용이 작성되어 있는지 확인
+    // FileReader           : 파일로부터 문자 데이터를 읽어들이는 클래스       -> 한 글자씩 읽음
+    // BufferedReader       : FileReader에 버퍼링 기능 추가한 클래스        -> 한 줄 단위로 읽음
+    //                        줄 단위로 데이터를 읽을 수 있어 빠르고 성는이 좋다
+    // Buffering : 데이터를 가져오는 것 (실패시 버퍼링 중단되었다)
+    // Streaming : String을 출력 중
+    public void method3() {
+        try {
+            FileReader file = new FileReader(System.getProperty("user.home") + "/OneDrive/Desktop/user.txt");
+            BufferedReader br = new BufferedReader(file); // 한 줄 단위로 읽는 성능 좋은 클래스
+            String line = br.readLine(); // 한 줄씩 읽어오는 readLine()기능 설정
+            while((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+            br.close();
+            file.close();
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void method4() {
+        try {
+            FileReader file = new FileReader(System.getProperty("user.home") + "/OneDrive/Desktop/user.txt");
+            BufferedReader br = new BufferedReader(file); // 한 줄 단위로 읽는 성능 좋은 클래스
+            String line = br.readLine(); // 한 줄씩 읽어오는 readLine()기능 설정
+            while((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+            br.close();
+            file.close();
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
