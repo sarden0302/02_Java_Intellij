@@ -3,6 +3,8 @@ package com.kh.hw.member.model.vo;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Getter @Setter
 public class Member {
     private String id;
@@ -27,5 +29,16 @@ public class Member {
 
     public String inform() {
         return this.id + " " + this.name + " " + this.password + " " + this.email + " " + this.gender + " " + this.age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Member member)) return false;
+        return gender == member.gender && age == member.age && Objects.equals(id, member.id) && Objects.equals(name, member.name) && Objects.equals(password, member.password) && Objects.equals(email, member.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, password, email, gender, age);
     }
 }

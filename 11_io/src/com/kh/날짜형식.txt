@@ -1,0 +1,40 @@
+날짜와 시간을 원하는 형식으로 지정하고 패턴을 전달
+
+패턴 문자
+
+문자          설명                      예
+y            연도           yyy -> 2024   yy -> 24
+M            월(숫자)               MM  -> 01           (M -> 11 사용 가능하긴 함, minutes랑 비슷해서 대문자로 구분
+MMM         월(영어)               MMM  ->   Nov
+MMMM        월(영어전체)           MMMM  ->   November
+d           일자                     d  ->   29
+E           요일                     E  ->   Fri
+EEEE        요일(전체)             EEEE  ->   Friday
+H           24시간제                HH   ->   14        (0 ~ 23 시까지)
+h           12시간제                hh   ->  오후 2     (오전 오후로 나뉘어 1 ~ 12)
+m           분(minutes)            mm   ->   19        (소문자로 표기)
+s           초(seconds)            ss   ->   59
+a           오전/오후                 AM || PM
+z           시간                      GMT+09:00        (Greenwich Mean Time) 영국 그리니치 천문대에서 측정한 시간
+
+
+
+
+
+
+
+
+
+
+1970년 1월 1일 09:00부터 현재까지 걸린 경과 시간을 읽는데 불편함이 있어
+아래 형식의 Class를 통해 현재 시간으로 바꿀 수 있다.
+
+Date
+    - 현재 날짜와 시간을 간단히 표현하거나 밀리초 단위로 시간 계산이 필요한 경우
+    - 안전성이 떨어짐 (↓ Class 선호)
+SimpleDateFormat
+    - 현재 날짜와 시간을 간단히 표현하는 Date 객체 업그레이드 버전 중 하나
+    - 특정 부분 안정성 문제 있어 (↓ Class 선호)
+
+DateTimeFormatter
+    - 가장 HOT한 Class

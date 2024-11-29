@@ -1,19 +1,25 @@
 package com.kh.hw.member.controller;
 
 import com.kh.hw.member.model.vo.Member;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.ArrayList;
+
+@Getter
+@Setter
 public class MemberController {
     //field
     public final int SIZE = 10;
     private Member[] m = new Member[SIZE];
-    private int index = 0;
+
 
     public int existMemberNum() {
-        return index;
+        return m.length;
     }
 
     public boolean checkId(String inputId) {
-        if (index == 0) {
+        if (m.length == 0) {
             return false;
         }
 
@@ -27,9 +33,13 @@ public class MemberController {
         return false;
     }
 
-    public int insertMember(String id, String name, String password, String email, char gender, int age) {
+    public String insertMember(String id, String name, String password, String email, char gender, int age) {
+        if (m.length > SIZE) {
+            return "최대 등록 가능한 회원 수는 10명입니다.\n현재 등록된 회원 수는 10명입니다.\n회원 수가 모두 꽉 찼기 때문에 일부 메뉴만 오픈됩니다.\n";
+        }
 
-        return 0;
+        m[m.length + 1] = new Member(id, name, password, email, gender, age);
+        return "새 회원을 등록합니다.";
     }
 
     public String searchId(String id) {
