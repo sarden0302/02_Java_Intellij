@@ -16,12 +16,15 @@ public class MemberMenu {
     }
 
     public void mainMenu() {
+        boolean full = false;
         try {
-            System.out.println("최대 등록 가능한 회원 수는 10명입니다.\n현재 등록된 회원 수는 " + mc.getM().length + "명입니다.");
-            if (mc.getM().length <= mc.getSIZE()) {
+            System.out.println("최대 등록 가능한 회원 수는 10명입니다.\n현재 등록된 회원 수는 " + mc.getCount() + "명입니다.");
+            if (mc.getCount() <= mc.getSIZE()) {
                 System.out.println("1. 새 회원 등록");
             } else {
                 System.out.println("회원 수가 모두 꽉 찼기 때문에 일부 메뉴만 오픈됩니다.");
+                System.out.println();
+                full = true;
             }
             System.out.println("2. 회원 검색");
             System.out.println("3. 회원 정보 수정");
@@ -33,58 +36,50 @@ public class MemberMenu {
 
             switch (choice) {
                 case 1:
+                    if (full) {
+                        System.out.println("잘못된 번호 입력입니다. 메인화면으로 돌아갑니다");
+                        break;
+                    }
                     insertMember();
-                    mainMenu();
                     break;
                 case 2:
                     searchMember();
-                    mainMenu();
                     break;
                 case 3:
                     updateMember();
-                    mainMenu();
                     break;
                 case 4:
                     deleteMember();
-                    mainMenu();
                     break;
                 case 5:
                     printAll();
-                    mainMenu();
                     break;
                 case 9:
                     System.out.println("프로그램을 종료합니다.");
                     return;
                 default:
-                    System.out.println("메뉴 입력은 1, 2, 3, 4, 5, 9 중에서 입력해주세요.");
-                    mainMenu();
+                    System.out.println("메뉴 입력은 "+ ((!full) ? " 1, " : "")  + "2, 3, 4, 5, 9 중에서 입력해주세요.");
             }
+            mainMenu();
 
         } catch (NumberFormatException e) {
-            System.out.println("메뉴 입력은 1, 2, 3, 4, 5, 9 중에서 입력해주세요.");
+            System.out.println("메뉴 입력은 "+ ((!full) ? " 1, " : "")  + "2, 3, 4, 5, 9 중에서 입력해주세요.");
             mainMenu();
         }
     }
 
     public void insertMember() {
-
-        if (mc.getM().length > mc.getSIZE()) {
-            System.out.println();
-            return;
-        }
         try {
             System.out.print("아이디 : ");
             String userId = sc.nextLine();
 
             for (Member member : mc.getM()) {
-                if (member.getId() == null) {
-
-
-                }
-                if (member.getId().equals(userId)) {
-                    System.out.println("중복된 아이디입니다. 다시 입력해주세요.");
-                    insertMember();
-                    return;
+                if (member != null) {
+                    if (member.getId().equals(userId)) {
+                        System.out.println("중복된 아이디입니다. 다시 입력해주세요.");
+                        insertMember();
+                        return;
+                    }
                 }
             }
             System.out.print("이름 : ");
@@ -96,7 +91,7 @@ public class MemberMenu {
             char gender = 'a';
             while(gender != 'M' && gender != 'F' && gender != 'm' && gender != 'f') {
                 System.out.print("성별(M/F) : ");
-                gender = sc.next().charAt(0);
+                gender = sc.nextLine().charAt(0);
                 if (gender != 'M' && gender != 'F' && gender != 'm' && gender != 'f') {
                     System.out.println("성별을 다시 입력하세요.");
                 }
@@ -123,19 +118,15 @@ public class MemberMenu {
             switch (choice) {
                 case 1:
                     searchId();
-                    searchMember();
                     break;
                 case 2:
                     searchName();
-                    searchMember();
                     break;
                 case 3:
                     searchEmail();
-                    searchMember();
                     break;
                 case 9:
-                    mainMenu();
-                    break;
+                    return;
                 default:
                     System.out.println("1, 2, 3, 9 중에 작성해주세요.");
                     searchMember();
@@ -176,19 +167,15 @@ public class MemberMenu {
             switch(choice) {
                 case 1:
                     updatePassword();
-                    updateMember();
                     break;
                 case 2:
                     updateName();
-                    updateMember();
                     break;
                 case 3:
                     updateEmail();
-                    updateMember();
                     break;
                 case 9:
-                    mainMenu();
-                    break;
+                    return;
                 default:
                     System.out.println("보기에 없습니다. 다시 입력해주세요.");
                      updateMember();
@@ -249,15 +236,12 @@ public class MemberMenu {
             switch (choice) {
                 case 1:
                     deleteOne();
-                    deleteMember();
                     break;
                 case 2:
                     deleteAll();
-                    deleteMember();
                     break;
                 case 9:
-                    mainMenu();
-                    break;
+                    return;
                 default:
                     System.out.println("1, 2, 9 중에서 작성해주세요.");
                     deleteMember();
@@ -277,6 +261,7 @@ public class MemberMenu {
             if (check.equalsIgnoreCase("y")) {
                 if (mc.delete(id)) {
                     System.out.println("성공적으로 삭제하였습니다.");
+                    return;
                 }
                 System.out.println("존재하지 않는 회원입니다.");
                 break;
@@ -290,10 +275,11 @@ public class MemberMenu {
 
     public void deleteAll() {
         mc.delete();
+        System.out.println("성공적으로 삭제하였습니다.");
     }
 
     public void printAll() {
-        if (mc.getM().length == 0) {
+        if (mc.getM()[0]== null) {
             System.out.println("현재 명단은 비어있습니다.");
             return;
         }

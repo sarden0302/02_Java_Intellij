@@ -15,6 +15,7 @@ public class MemberController {
     //field
     public final int SIZE = 10;
     private Member[] m = new Member[SIZE];
+    private int count = 0;
 
     public int existMemberNum() {
         return m.length;
@@ -36,16 +37,17 @@ public class MemberController {
     }
 
     public String insertMember(String id, String name, String password, String email, char gender, int age) {
-        if (m.length > SIZE) {
-            return "최대 등록 가능한 회원 수는 10명입니다.\n현재 등록된 회원 수는 10명입니다.\n회원 수가 모두 꽉 찼기 때문에 일부 메뉴만 오픈됩니다.\n";
+        if (count >= SIZE) {
+            return "최대 등록 가능한 회원 수는 10명입니다.\n현재 등록된 회원 수는 " + count + "명입니다.\n회원 수가 모두 꽉 찼기 때문에 일부 메뉴만 오픈됩니다.\n";
         }
 
-        m[m.length] = new Member(id, name, password, email, gender, age);
-        return "새 회원을 등록합니다.";
+        m[count] = new Member(id, name, password, email, gender, age);
+        count++;
+        return "";
     }
 
     public String searchId(String id) {
-        if (m.length == 0) {
+        if (m[0] == null) {
             return "현재 명단은 비어있습니다.";
         }
 
@@ -59,7 +61,7 @@ public class MemberController {
     }
 
     public boolean searchName(String name) {
-        if (m.length == 0) {
+        if (m[0] == null) {
             System.out.println("현재 명단은 비어있습니다.");
             return false;
         }
@@ -75,7 +77,7 @@ public class MemberController {
     }
 
     public boolean searchEmail(String email) {
-        if (m.length == 0) {
+        if (m[0] == null) {
             System.out.println("현재 명단은 비어있습니다.");
             return false;
         }
@@ -133,44 +135,51 @@ public class MemberController {
     }
 
     public boolean delete (String id) {
-        if (m.length == 0) {
+        if (count == 0) {
             return false;
         }
 
         // 1. ArrayList로 변경 후 재설정 후 다시 입력
         // 2. System.arraycopy()
         boolean checking = false;
-        List<Member> memberArrayList = Arrays.asList(m);
 
-        for (Member member : memberArrayList) {
-            if (member.getId().equals(id)) {
-                memberArrayList.remove(member);
+        for (int i = 0; i < m.length; i++) {
+            if (m[i] == null) {
+
+                break;
+            }
+            System.out.println("delete 내 m[" + i + "] : " + m[i].inform());
+            if (m[i].getId().equals(id)) {
+                m[i] = null;
                 checking = true;
             }
         }
+        List<Member> memberArrayList = Arrays.asList(m);
 
         if (!checking) {
             return false;
         }
+
+        m = new Member[SIZE];
+
         for (int i = 0; i < memberArrayList.size(); i++) {
-            Member member = memberArrayList.get(i);
+            m[i] = memberArrayList.get(i);
         }
-        if (memberArrayList.size() == m.length) {
-            for (int i = memberArrayList.size() + 1; i <  m.length; i++) {
-                m[i] = null;
-            }
-        }
+        count--;
         return true;
     }
 
     public void delete() {
         m = new Member[SIZE];
-
+        count = 0;
     }
 
     public void printAll() {
         for (Member member : m) {
-            System.out.println(member.toString());
+            if (member == null) {
+                return;
+            }
+            System.out.println(member.inform());
         }
     }
 
