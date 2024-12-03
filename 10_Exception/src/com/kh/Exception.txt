@@ -2,6 +2,33 @@
 
 코드 작성 중 후에 감싸고자 하는 코드에 자동으로 원하는 속성으로 감싸기를 진행
 
+try-with-resource :
+                Java7 에서 추가된 기능. 자동으로 자원을 해제해주는 기능
+                File FileWriter FileReader InputStream OutputStream BufferedReader Scanner 등
+                위와 같이 close()를 작성해야되는 객체들을 자동으로 닫아주기 때문에 close() 생략 가능
+
+                try 블록이 종료되면 자동으로 try() 내에 있는 객체들만 종료
+
+                [사용법]
+                try(코드1; 코드2; 코드3; ...) {
+
+                }
+
+
+                예를 들어)
+                    try (Scanner sc = new Scanner(System.in)) {
+                        String name = sc.nextLine();
+                    }
+                    -> try 종료시 Scanner sc가 자동으로 close()된다.
+
+                try() 내 코드가 2가지 이상 작성될 경우 => ;으로 구분
+
+                try(
+                    Scanner sc = new Scanner(System.in);
+                    File file = new File()) {
+
+                }
+
 
 try
     (1) try ~ catch
@@ -20,3 +47,21 @@ finally
         - 외부 프로그램에서 장치 연결을 강제적으로 끊어야할 때 주로 사용
 
 throw
+
+throws :
+    예외를 기능에서 처리하지 않고 호출한 곳으로 문제를 전달만 하는 기능
+    예외가 발생할 수 있는 메서드(기능)에서 최초로 호출한 곳으로
+    문제가 생겼음을 던져주기 위해 사용
+    throws는 매서드 기능에서 문제가 생겼을 때 책임을 넘기는 기능
+
+    문제를 매끄럽게 해결하기 위해서는 최초로 문제가 생길만한 기능에는 try-catch 사용
+    코드가 길어질 경우 throws로 문제를 전달하기만 하기
+
+    [사용법]
+        public void 메서드명칭 throws Exception() {
+            기능설정
+        }
+
+        public return 메서드명칭 throws Exception() {
+            기능설정
+        }
