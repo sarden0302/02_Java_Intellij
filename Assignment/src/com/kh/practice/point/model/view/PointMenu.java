@@ -15,10 +15,10 @@ public class PointMenu {
         System.out.println("1. 원");
         System.out.println("2. 사각형");
         System.out.println("9. 끝내기");
-        System.out.print("메뉴 번호 : ");
         boolean isTrue = true;
         try {
             while (isTrue) {
+                System.out.print("메뉴 번호 : ");
                 int choice = Integer.parseInt(scanner.nextLine());
 
                 switch (choice) {
@@ -36,7 +36,7 @@ public class PointMenu {
                 }
             }
         } catch (NumberFormatException e) {
-            System.out.println("1, 2, 9 중에서 작성해주세요.");
+            System.out.println("종료합니다.");
         } finally {
             System.out.println("종료합니다.");
         }
@@ -133,9 +133,11 @@ public class PointMenu {
             Integer x = Integer.parseInt(scanner.nextLine());
             System.out.print("y 좌표 : ");
             Integer y = Integer.parseInt(scanner.nextLine());
-            System.out.print("반지름 : ");
-            Integer radius = Integer.parseInt(scanner.nextLine());
-            System.out.println("둘레 : " + x + ", " + y + ", " + radius + " / " + cc.calcArea(x, y, radius));
+            System.out.print("높이 : ");
+            Integer height = Integer.parseInt(scanner.nextLine());
+            System.out.print("넓이 : ");
+            Integer width = Integer.parseInt(scanner.nextLine());
+            System.out.println("넓이 : " + x + ", " + y + ", " + height + ", " + width + " / " + rc.calcPerimeter(x, y, height, width));
         } catch (NumberFormatException e) {
             System.out.println("잘못 입력하셨습니다. 메인화면으로 돌아갑니다.");
         }
@@ -147,9 +149,11 @@ public class PointMenu {
             Integer x = Integer.parseInt(scanner.nextLine());
             System.out.print("y 좌표 : ");
             Integer y = Integer.parseInt(scanner.nextLine());
-            System.out.print("반지름 : ");
-            Integer radius = Integer.parseInt(scanner.nextLine());
-            System.out.println("둘레 : " + x + ", " + y + ", " + radius + " / " + cc.calcArea(x, y, radius));
+            System.out.print("높이 : ");
+            Integer height = Integer.parseInt(scanner.nextLine());
+            System.out.print("넓이 : ");
+            Integer width = Integer.parseInt(scanner.nextLine());
+            System.out.println("넓이 : " + x + ", " + y + ", " + height + ", " + width + " / " + rc.calcArea(x, y, height, width));
         } catch (NumberFormatException e) {
             System.out.println("잘못 입력하셨습니다. 메인화면으로 돌아갑니다.");
         }
